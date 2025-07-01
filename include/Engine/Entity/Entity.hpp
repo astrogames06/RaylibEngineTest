@@ -21,7 +21,7 @@ public:
     virtual void Kill() { alive = false; }
 
     // To delete entity from game.entities
-    void Delete() { remove = true; }
+    virtual void Delete() { remove = true; }
 };
 
 #endif

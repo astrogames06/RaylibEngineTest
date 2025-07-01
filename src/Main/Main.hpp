@@ -64,17 +64,37 @@ class Main : public Scene
             new_enemy->y = GetRandomValue(0, game.HEIGHT);
             game.AddEntity(std::move(new_enemy));
         }
+
+        for (Plant* plant : game.GetEntitiesOfType<Plant>())
+        {
+            if (!plant->remove)
+                std::cout << "Plant at " << plant->x << ", " << plant->y << " is alive\n";
+            else
+                std::cout << "Plant at " << plant->x << ", " << plant->y << " marked for removal\n";
+
+            if (CheckCollisionRecs(*player->current_axe_hitbox,
+                {(float)plant->x, (float)plant->y, (float)plant->texture.width*plant->scale, (float)plant->texture.height*plant->scale}
+            ))
+            {
+                std::cout << "Deleting plant at " << plant->x << ", " << plant->y << "\n";
+                plant->Delete();
+            }
+        }
     }
 
     void Draw() override
     {
         DrawText("Main Scene", 20, 20, 20, BLACK);
-        DrawTerrainAndPlants(noise,
+        DrawTerrainAndPlants(noise, &entities,
             {(float)startX, (float)startY}, {(float)endX, (float)endY},
             tileAtlas, insidesAtlas,
             tree, bush, 2.5f,
             game.CELL_SIZE
         );
+        for (Plant* plant : game.GetEntitiesOfType<Plant>())
+        {
+            DrawRectangleLines(plant->x, plant->y, plant->texture.width*plant->scale, plant->texture.height*plant->scale, RED);
+        }
     }
 };
 

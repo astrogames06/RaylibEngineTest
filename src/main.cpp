@@ -31,6 +31,7 @@ void UpdateDrawFrame();
 int main(void)
 {
 	InitWindow(game.WIDTH, game.HEIGHT, game.TITLE.c_str());
+	//ToggleFullscreen();
 	game.Init();
 
 	Scenes::main_scene = std::make_unique<Main>();
