@@ -55,7 +55,7 @@ class Main : public Scene
         Player* player = game.GetEntityOfType<Player>();
         game.camera.target.x = player->x;
         game.camera.target.y = player->y;
-        game.camera.offset = {game.WIDTH/2, game.HEIGHT/2};
+        game.camera.offset = {(float)game.WIDTH/2, (float)game.HEIGHT/2};
 
         if (IsKeyPressed(KEY_O))
         {
