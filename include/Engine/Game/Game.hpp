@@ -12,8 +12,8 @@
 class Game
 {
 public:
-    const int WIDTH = 875;
-    const int HEIGHT = 455;
+    int WIDTH = GetScreenWidth();
+    int HEIGHT = GetScreenHeight();
     const std::string TITLE = "Level Builder!";
 
     Camera2D camera;

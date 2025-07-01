@@ -93,7 +93,7 @@ class Main : public Scene
         );
         for (Plant* plant : game.GetEntitiesOfType<Plant>())
         {
-            DrawRectangleLines(plant->x, plant->y, plant->texture.width*plant->scale, plant->texture.height*plant->scale, RED);
+            //DrawRectangleLines(plant->x, plant->y, plant->texture.width*plant->scale, plant->texture.height*plant->scale, RED);
         }
     }
 };
